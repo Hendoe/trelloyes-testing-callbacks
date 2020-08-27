@@ -1,54 +1,27 @@
 import React, { Component } from 'react';
-import List from './List';
-import STORE from './STORE';
+import List from './List'
+import STORE from './STORE'
 import './App.css';
 
 class App extends Component {
-  // new
   state = {
-   store: STORE
+    store: STORE
   }
-
-  // OG
-  // state = {
-  //   lists: [],
-  //   allCards: {}
-  // }
-
-  // static defaultProps = {
-  //   store: {
-  //     lists: [],
-  //     allCards: {},
-  //   }
-  // };
 
   handleRandomCardClick() {
     console.log('handleRandomCardClick - clicked')
+
   }
 
-  handleDeleteCard = (card) => {
+  handleDeleteCardClick() {
     console.log('handleDeleteCardClick clicked')
-    console.log(this.state)
-  //   const newCards = this.state.cards.filter(crd => crd !== card)
-  //   this.setState({
-  //     allCards: newCards
-  //   })
-  // }
-
-    // function omit(card, keyToOmit) {
-    //   let {[keyToOmit]: _, ...rest} = card;
-    //   console.log(keyToOmit)
-    //   return rest;
-    // }
-
-    // let newCards = omit(card, this.state.allCards)
-  
-    const newCards = this.state.allCards.filter(crd => crd !== card)
-    this.setState({
-      allCards: newCards
-    })
-    console.log(newCards)
+    function omit(obj, keyToOmit) {
+      let {[keyToOmit]: _, ...rest} = obj;
+      return rest;
+    }
   }
+
+
 
   render() {
     const { store } = this.state
@@ -63,7 +36,7 @@ class App extends Component {
               key={list.id}
               header={list.header}
               cards={list.cardIds.map(id => store.allCards[id])}
-              onDeleteCard={this.handleDeleteCard}
+              onDeleteCard={this.handleDeleteCardClick}
               onRandomCard={this.handleRandomCardClick}
             />
           ))}
