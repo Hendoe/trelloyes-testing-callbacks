@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import List from './List'
+import STORE from './STORE'
 import './App.css';
 
 class App extends Component {
-  static defaultProps = {
-    store: {
-      lists: [],
-      allCards: {},
-    }
-  };
+  state = {
+    store: STORE
+  }
 
   handleRandomCardClick() {
     console.log('handleRandomCardClick - clicked')
+
   }
 
   handleDeleteCardClick() {
     console.log('handleDeleteCardClick clicked')
+    function omit(obj, keyToOmit) {
+      let {[keyToOmit]: _, ...rest} = obj;
+      return rest;
+    }
   }
 
 
 
   render() {
-    const { store } = this.props
+    const { store } = this.state
     return (
       <main className='App'>
         <header className='App-header'>
