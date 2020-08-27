@@ -10,6 +10,16 @@ class App extends Component {
     }
   };
 
+  handleRandomCardClick() {
+    console.log('handleRandomCardClick - clicked')
+  }
+
+  handleDeleteCardClick() {
+    console.log('handleDeleteCardClick clicked')
+  }
+
+
+
   render() {
     const { store } = this.props
     return (
@@ -23,6 +33,8 @@ class App extends Component {
               key={list.id}
               header={list.header}
               cards={list.cardIds.map(id => store.allCards[id])}
+              onDeleteCard={this.handleDeleteCardClick}
+              onRandomCard={this.handleRandomCardClick}
             />
           ))}
         </div>
